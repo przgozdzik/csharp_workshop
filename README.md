@@ -8,3 +8,6 @@ for now work in progress
 
 Dopisane;
 Hello Przemo!
+
+Dopisane2:
+NewBranch commit
