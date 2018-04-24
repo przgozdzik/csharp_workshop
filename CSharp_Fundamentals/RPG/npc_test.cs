@@ -53,15 +53,42 @@ namespace CSharp_Fundamentals.RPG
 
             // npc life3_npc = new npc(20,10); // "new" łamie powiązanie
 
-            Assert.AreEqual(life3_npc.max_life, 20, "wOw");
-            Assert.AreEqual(life3_npc.current_life, 10, "WoW");
+            Assert.AreEqual(life3_npc.max_life, 50, "wOw");
+            Assert.AreEqual(life3_npc.current_life, 30, "WoW");
 
             life3_npc.max_life = 20;
             
-            Assert.AreEqual(life2_npc.max_life, 50, "00");
+            Assert.AreEqual(life2_npc.max_life, 20, "00");
             Assert.AreEqual(life2_npc.current_life, 30, "11");
+            
+        }
 
+        [Test]
+        public void max_life()
+        {
+            npc Hero2 = new npc(100, 200);
+            Assert.AreEqual(Hero2.max_life, 100, "False");
+            Assert.AreEqual(Hero2.current_life, 100, "False current");
 
+        }
+
+        [Test]
+        public void take_damage()
+        {
+            npc Hero3 = new npc(100);
+            Hero3.Take_Damage(50);
+            Assert.AreEqual(Hero3.current_life, 50, "False");
+ 
+        }
+
+        [Test]
+        public void is_alive()
+        {
+            npc Hero4 = new npc(100);
+            Hero4.Take_Damage(91);
+            Assert.True(Hero4.Is_alive());
+
+            Console.WriteLine(Hero4.current_life);
 
         }
     }
