@@ -91,5 +91,15 @@ namespace CSharp_Fundamentals.RPG
             Console.WriteLine(Hero4.current_life);
 
         }
+
+        [Test]
+        public void hero_test()
+        {
+            Heroes test_npc = new Heroes(100);
+            test_npc.Attack();
+
+            Assert.AreEqual(test_npc.Attack(), 10, "Different than 10");
+
+        }
     }
 }
