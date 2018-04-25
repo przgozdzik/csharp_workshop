@@ -48,7 +48,7 @@ namespace CSharp_Fundamentals.RPG
         // a jeśli jest to zwróć wartość obrażeń
         //jeśli nie ma na liście - zwróć zero
 
-        public int ReturnDamage(string WeaponName)
+        public int GetWeaponDamage(string WeaponName)
         {
             int DamageLevel = 0;
 

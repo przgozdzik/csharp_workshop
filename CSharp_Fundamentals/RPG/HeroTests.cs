@@ -35,15 +35,34 @@ namespace CSharp_Fundamentals.RPG
             bool HeIsAlive = testHero.Is_alive();
             Console.WriteLine(HeIsAlive);
 
-            int ActualDamage = testHero.ReturnDamage("sword");
-
-
-
-            //{
-            //    this.
-            //}
+            int ActualDamage = testHero.GetWeaponDamage("sword");
             int ExpectedDamage = 8;
             Assert.AreEqual(ExpectedDamage, ActualDamage);
+        }
+
+
+        // sprawdzić czy dla każdej broni zwraca obrażenia
+        [Test]
+        public void HeroTests3()
+        {
+            List<string> Names = testHero.GetWeaponNames();
+            foreach (var TestWeapon in Names)
+            {
+                int Damage = testHero.GetWeaponDamage(TestWeapon);
+                Console.WriteLine($"weapon: {TestWeapon}   damage: {Damage}");
+            }
+
+
+
+
+            //int AxeDamage = testHero.ReturnDamage("axe");
+            //int AxeExpDmg = 12;
+
+            //int SwordDamage = testHero.ReturnDamage("sword");
+            //int SwordExpDmg = 8;
+
+            //int FireballDamage = testHero.ReturnDamage("fireball");
+            //int FireballExpDmg = 12;
         }
 
         [TearDown]
