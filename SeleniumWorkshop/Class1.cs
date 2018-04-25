@@ -73,6 +73,16 @@ namespace SeleniumWorkshop
             Assert.AreEqual(expectedUrl, actualUrl);
         }
 
+        [Test]
+        public void My_6th_Webdrive()
+        {
+            var cssSelector = driver.FindElementByCssSelector("#homefeatured > li:nth-child(2) > div > div.right-block > h5 > a");
+            string actualText = cssSelector.Text;
+            
+            string expectedText = "Blouse";
+            Assert.AreEqual(expectedText, actualText);
+        }
+
         [TearDown]
         public void TearDown()
         {
