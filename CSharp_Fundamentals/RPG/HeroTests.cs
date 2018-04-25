@@ -52,9 +52,6 @@ namespace CSharp_Fundamentals.RPG
                 Console.WriteLine($"weapon: {TestWeapon}   damage: {Damage}");
             }
 
-
-
-
             //int AxeDamage = testHero.ReturnDamage("axe");
             //int AxeExpDmg = 12;
 
