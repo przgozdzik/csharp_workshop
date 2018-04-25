@@ -8,6 +8,7 @@ using NUnit.Framework;
 namespace CSharp_Fundamentals.RPG
 {
     [TestFixture]
+    [Category("Base class tests")]
     public class npc_test
     {
         [Test]

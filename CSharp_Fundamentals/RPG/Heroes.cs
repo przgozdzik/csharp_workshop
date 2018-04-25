@@ -42,17 +42,26 @@ namespace CSharp_Fundamentals.RPG
             }
             return WeaponNames;
         }
+        // POLECENIE
+        // zwróć wartość obrażeń dla konkretnej broni
+        // napisz test , któy po wpisaniu nazwy broni sprawdzi czy jest na liście
+        // a jeśli jest to zwróć wartość obrażeń
+        //jeśli nie ma na liście - zwróć zero
 
-        //public GetDamageLevel()
-        //{
-        //        var DamageLevel = new ();
+        public int ReturnDamage(string WeaponName)
+        {
+            int DamageLevel = 0;
 
-        //        foreach (var WeaponFromTheList in weapons_list)
-        //        {
-        //            DamageLevel.Add(WeaponFromTheList.Damage);
-        //        }
-        //        return DamageLevel;
-        //}
+            foreach (var WeaponFromTheList in weapons_list)
+            {
+               if (WeaponName == WeaponFromTheList.Name)
+                {
+                    DamageLevel = WeaponFromTheList.Damage;
+                }
+
+            }
+            return DamageLevel;
+        }
     }
 
 
