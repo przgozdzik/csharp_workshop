@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
+using SeleniumWorkshop.Pages; // odwołanie do namespace "Contact_Us"
 
 namespace SeleniumWorkshop
 {
@@ -146,8 +147,10 @@ namespace SeleniumWorkshop
             var contact_usUrl = driver.FindElementById("contact-link");
             contact_usUrl.Click();
 
-            var cssSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(3)");
-            cssSelector.Click();
+            var ContactUsPage = new Contact_Us(driver);
+
+            ContactUsPage.DropDown(2).Click();
+
         }
 
         [Test]
@@ -157,20 +160,17 @@ namespace SeleniumWorkshop
             var contact_usUrl = driver.FindElementById("contact-link");
             contact_usUrl.Click();
 
-            var optionSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(3)");
-            optionSelector.Click();
+            var ContactUsPage = new Contact_Us(driver);
 
-            var emailBox = driver.FindElementByCssSelector("#email");
-            emailBox.SendKeys("przemek.gozdzik@test.com");
+            ContactUsPage.DropDown(3).Click();
 
-            var messageBox = driver.FindElementByCssSelector("#message");
-            messageBox.SendKeys("Thank you for oportunity to test you website");
+            ContactUsPage.EmailBox().SendKeys("przemek.gozdzik@test.com");
 
-            var SendButton = driver.FindElementByCssSelector("#submitMessage > span");
-            SendButton.Click();
+            ContactUsPage.MessageBox().SendKeys("Thank you for the opportunity to test you website");
+   
+            ContactUsPage.SendButton().Click();
 
-            var SendMessage = driver.FindElementByCssSelector("#center_column > p");
-            string ActualText = SendMessage.Text;
+            string ActualText = ContactUsPage.SendMessage().Text;
 
             string ExpectedText = "Your message has been successfully sent to our team.";
 
@@ -182,15 +182,13 @@ namespace SeleniumWorkshop
         [Test]
         public void My_12th_Webdrive()
         {
+            var HomePage = new MainPage(driver);
 
-            var searchBar = driver.FindElementByCssSelector("#search_query_top");
-            searchBar.SendKeys("casual dresses > printed summer dress");
+            HomePage.SearchBar().SendKeys("casual dresses > printed summer dress");
 
-            var SearchButton = driver.FindElementByCssSelector("#searchbox > button");
-            SearchButton.Click();
+            HomePage.SearchButton().Click();
 
-            var Dress1 = driver.FindElementByCssSelector("#center_column > ul > li > div > div.left-block > div > a.product_img_link > img");
-            Dress1.Click();
+            HomePage.Dress().Click();
 
             var Color1 = driver.FindElementByCssSelector("#color_14");
             Color1.Click();
