@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
@@ -18,6 +19,8 @@ namespace SeleniumWorkshop
         {
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://www.automationpractice.com");
+
+            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); // czekaj
         }
 
         [Test]
@@ -145,6 +148,94 @@ namespace SeleniumWorkshop
 
             var cssSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(3)");
             cssSelector.Click();
+        }
+
+        [Test]
+        public void My_11th_Webdrive()
+        {
+
+            var contact_usUrl = driver.FindElementById("contact-link");
+            contact_usUrl.Click();
+
+            var optionSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(3)");
+            optionSelector.Click();
+
+            var emailBox = driver.FindElementByCssSelector("#email");
+            emailBox.SendKeys("przemek.gozdzik@test.com");
+
+            var messageBox = driver.FindElementByCssSelector("#message");
+            messageBox.SendKeys("Thank you for oportunity to test you website");
+
+            var SendButton = driver.FindElementByCssSelector("#submitMessage > span");
+            SendButton.Click();
+
+            var SendMessage = driver.FindElementByCssSelector("#center_column > p");
+            string ActualText = SendMessage.Text;
+
+            string ExpectedText = "Your message has been successfully sent to our team.";
+
+            Assert.AreEqual(ExpectedText, ActualText);
+            Console.WriteLine(ActualText);
+
+        }
+
+        [Test]
+        public void My_12th_Webdrive()
+        {
+
+            var searchBar = driver.FindElementByCssSelector("#search_query_top");
+            searchBar.SendKeys("casual dresses > printed summer dress");
+
+            var SearchButton = driver.FindElementByCssSelector("#searchbox > button");
+            SearchButton.Click();
+
+            var Dress1 = driver.FindElementByCssSelector("#center_column > ul > li > div > div.left-block > div > a.product_img_link > img");
+            Dress1.Click();
+
+            var Color1 = driver.FindElementByCssSelector("#color_14");
+            Color1.Click();
+
+            var Size1 = driver.FindElementByCssSelector("#group_1 > option:nth-child(2)");
+            Size1.Click();
+
+            var AddToCart1 = driver.FindElementByCssSelector("#add_to_cart > button > span");
+            AddToCart1.Click();
+
+            Thread.Sleep(1000); // czekaj 1000 ms
+
+            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+            var ContinueShopping = driver.FindElementByCssSelector("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > span > span");
+            ContinueShopping.Click();
+
+            //searchBar.SendKeys("casual dresses > printed dress");
+            //SearchButton.Click();
+
+            //var Dress2 = driver.FindElementByCssSelector("#center_column > ul > li.ajax_block_product.col-xs-12.col-sm-6.col-md-4.last-line.last-item-of-tablet-line.last-mobile-line > div > div.left-block > div > a.product_img_link > img");
+            //Dress2.Click();
+             
+
+
+            //var optionSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(3)");
+            //optionSelector.Click();
+
+            //var emailBox = driver.FindElementByCssSelector("#email");
+            //emailBox.SendKeys("przemek.gozdzik@test.com");
+
+            //var messageBox = driver.FindElementByCssSelector("#message");
+            //messageBox.SendKeys("Thank you for oportunity to test you website");
+
+            //var SendButton = driver.FindElementByCssSelector("#submitMessage > span");
+            //SendButton.Click();
+
+            //var SendMessage = driver.FindElementByCssSelector("#center_column > p");
+            //string ActualText = SendMessage.Text;
+
+            //string ExpectedText = "Your message has been successfully sent to our team.";
+
+            //Assert.AreEqual(ExpectedText, ActualText);
+            //Console.WriteLine(ActualText);
+
         }
 
         [TearDown]
