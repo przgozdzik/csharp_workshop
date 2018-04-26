@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace SeleniumWorkshop.Pages
 {
-    public class Contact_Us
+    public class Contact_Us : Header
     {
-
-        IWebDriver driver;
-        public Contact_Us(IWebDriver driver)
+        public Contact_Us(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
         }
             
 

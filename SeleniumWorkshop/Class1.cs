@@ -183,6 +183,7 @@ namespace SeleniumWorkshop
         public void My_12th_Webdrive()
         {
             var HomePage = new MainPage(driver);
+            var ProdPage = new ProductPage(driver);
 
             HomePage.SearchBar().SendKeys("casual dresses > printed summer dress");
 
@@ -190,21 +191,17 @@ namespace SeleniumWorkshop
 
             HomePage.Dress().Click();
 
-            var Color1 = driver.FindElementByCssSelector("#color_14");
-            Color1.Click();
+            ProdPage.Color().Click();
 
-            var Size1 = driver.FindElementByCssSelector("#group_1 > option:nth-child(2)");
-            Size1.Click();
+            ProdPage.Size().Click();
 
-            var AddToCart1 = driver.FindElementByCssSelector("#add_to_cart > button > span");
-            AddToCart1.Click();
+            ProdPage.AddToCart().Click();
 
             Thread.Sleep(1000); // czekaj 1000 ms
 
-            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            ProdPage.ContinueShopping().Click();
 
-            var ContinueShopping = driver.FindElementByCssSelector("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > span > span");
-            ContinueShopping.Click();
+            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             //searchBar.SendKeys("casual dresses > printed dress");
             //SearchButton.Click();

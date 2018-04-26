@@ -7,12 +7,10 @@ using OpenQA.Selenium;
 
 namespace SeleniumWorkshop.Pages
 {
-    public class MainPage
+    public class MainPage : Header
     {
-        IWebDriver driver;
-        public MainPage(IWebDriver driver)
+        public MainPage(IWebDriver driver) : base (driver)
         {
-            this.driver = driver;
         }
 
 
