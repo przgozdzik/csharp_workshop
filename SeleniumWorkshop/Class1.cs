@@ -83,6 +83,70 @@ namespace SeleniumWorkshop
             Assert.AreEqual(expectedText, actualText);
         }
 
+        [Test]
+        public void My_7th_Webdrive()
+        {
+
+            var contact_usUrl = driver.FindElementById("contact-link");
+            contact_usUrl.Click();
+
+            var cssSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(2)");
+            string actualText = cssSelector.Text;
+            
+            Assert.AreEqual("Customer service", actualText);
+            Console.WriteLine(actualText);
+
+            // cssSelector.Click();
+
+        }
+
+        [Test]
+        public void My_8th_Webdrive()
+        {
+
+            var contact_usUrl = driver.FindElementById("contact-link");
+            contact_usUrl.Click();
+
+            var cssSelector = driver.FindElementByCssSelector("#id_contact");
+            string actualText = cssSelector.Text;
+
+            // Assert.AreEqual("Customer service", actualText);
+            Console.WriteLine(actualText);
+
+
+        }
+
+        [Test]
+        public void My_9th_Webdrive()
+        {
+
+            var contact_usUrl = driver.FindElementById("contact-link");
+            contact_usUrl.Click();
+
+            var elements = driver.FindElementsByCssSelector("#id_contact > option");
+
+
+            foreach (var OneOfTheElements in elements)
+            {
+                string actualText = OneOfTheElements.Text;
+                Console.WriteLine($"Option: {actualText}");
+
+                
+            }
+            
+        }
+
+        [Test]
+        public void My_10th_Webdrive()
+        {
+
+            var contact_usUrl = driver.FindElementById("contact-link");
+            contact_usUrl.Click();
+
+            var cssSelector = driver.FindElementByCssSelector("#id_contact > option:nth-child(3)");
+            cssSelector.Click();
+        }
+
         [TearDown]
         public void TearDown()
         {
